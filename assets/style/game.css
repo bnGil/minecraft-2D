@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  height: 100%;
+  width: 80%;
+}
+
+.grid-item {
+  width: 100%;
+  height: 100%;
+  min-height: calc(100% / 6);
+}
+
+.grid-item:hover {
+  border: 1px solid black;
+}
+
+.sky {
+  background-color: lightblue;
+}
+
+.grass {
+  background-color: green;
+}
