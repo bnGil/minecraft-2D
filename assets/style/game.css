@@ -7,20 +7,16 @@
   --sky-color: rgb(121, 188, 255);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Minecrafter", Arial, Helvetica, sans-serif;
-}
-
 body {
   height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: url(../imgs/materials/Sand.png);
 }
+
+/* ----------------------Gameboard--------------------------- */
 
 .grid-container {
   height: 100%;
@@ -46,13 +42,6 @@ body {
 
 .grid-item:hover {
   border: 1px solid var(--color-white);
-}
-
-.menu-container {
-  height: 100%;
-  width: 15%;
-  background-color: var(--menu-bg-color);
-  border-left: 2px solid var(--color-black);
 }
 
 .sky {
@@ -88,6 +77,141 @@ body {
   background-size: cover;
 }
 
+/* ----------------------Menu--------------------------- */
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  width: 15%;
+  background-color: var(--menu-bg-color);
+  border-left: 2px solid var(--color-black);
+}
+
+.tools-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tool-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  border: 2px solid black;
+}
+
+.tool-container:hover {
+  background-color: var(--color-white);
+}
+
+.tool {
+  width: 5rem;
+  height: 5rem;
+}
+
+.axe-img {
+  background: url(../imgs/tools/tools.png) no-repeat -110px 10px;
+  background-size: 200px;
+}
+
+.pickaxe-img {
+  background: url(../imgs/tools/tools.png) no-repeat -60px 10px;
+  background-size: 200px;
+}
+
+.shovel-img {
+  background: url(../imgs/tools/tools.png) no-repeat -160px 10px;
+  background-size: 200px;
+}
+
+.storage-grid {
+  margin: 2rem;
+  display: grid;
+  grid-template-areas:
+    "log leaf grass"
+    "dirt stone water";
+  justify-content: center;
+  gap: 1rem;
+}
+
+.storage-item {
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.storage-log {
+  background: url(../imgs/materials/Log.png) no-repeat;
+  background-size: cover;
+  grid-area: log;
+  opacity: 0.9;
+}
+.storage-leaf {
+  background: url(../imgs/materials/Leaf.png) no-repeat;
+  background-size: cover;
+  grid-area: leaf;
+  opacity: 0.9;
+}
+.storage-grass {
+  background: url(../imgs/materials/Grass.png) no-repeat;
+  background-size: cover;
+  grid-area: grass;
+  opacity: 0.9;
+}
+.storage-dirt {
+  background: url(../imgs/materials/Dirt.png) no-repeat;
+  background-size: cover;
+  grid-area: dirt;
+  opacity: 0.9;
+}
+.storage-stone {
+  background: url(../imgs/materials/Cobblestone.png) no-repeat;
+  background-size: cover;
+  grid-area: stone;
+  opacity: 0.9;
+}
+.storage-water {
+  background: url(../imgs/materials/Water.png) no-repeat;
+  background-size: cover;
+  grid-area: water;
+  opacity: 0.9;
+}
+
+.material__amount {
+  font-size: 1.5rem;
+  color: gold;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  font-size: 1.5rem;
+  width: 10rem;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+/* ----------------------Media queries--------------------------- */
+
+@media (max-width: 1000px) {
+  .storage-grid {
+    grid-template-areas:
+      "log leaf"
+      "grass dirt"
+      "stone water";
+  }
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -98,10 +222,68 @@ body {
     width: 100%;
     border-left: 0;
     border-top: 2px solid var(--color-black);
+    flex-direction: row;
+  }
+
+  .storage-grid {
+    grid-template-areas:
+      "log leaf grass"
+      "dirt stone water";
   }
 
   .grid-container {
-    height: 80%;
+    height: 90%;
     width: 100%;
+  }
+
+  .tools-container {
+    flex-direction: row;
+  }
+
+  .tool {
+    width: 5rem;
+    height: 3.5rem;
+  }
+
+  .axe-img {
+    background: url(../imgs/tools/tools.png) no-repeat -89px 1px;
+    background-size: 17rem;
+  }
+
+  .pickaxe-img {
+    background: url(../imgs/tools/tools.png) no-repeat -50px 2px;
+    background-size: 17rem;
+  }
+
+  .shovel-img {
+    background: url(../imgs/tools/tools.png) no-repeat -130px 2px;
+    background-size: 17rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .storage-grid {
+    grid-template-areas:
+      "log leaf"
+      "grass dirt"
+      "stone water";
+  }
+
+  .menu-container {
+    height: 40%;
+  }
+
+  .tools-container {
+    flex-direction: column;
+  }
+
+  .tool {
+    width: 5rem;
+    height: 3.5rem;
+    margin: 0;
+  }
+
+  .tool-container {
+    margin: 2px;
   }
 }

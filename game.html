@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/style/style.css" />
     <link rel="stylesheet" href="assets/style/game.css" />
     <title>Document</title>
   </head>
@@ -12,9 +13,45 @@
       <div class="grid"></div>
     </div>
     <div class="menu-container">
-      <div class="tools-container"></div>
-      <div class="storage-container"></div>
-      <div class="options-container"></div>
+      <div class="tools-container">
+        <div class="tool-container">
+          <div class="axe-img tool"></div>
+          <p>Axe</p>
+        </div>
+        <div class="tool-container">
+          <div class="pickaxe-img tool"></div>
+          <p>Pickaxe</p>
+        </div>
+        <div class="tool-container">
+          <div class="shovel-img tool"></div>
+          <p>Shovel</p>
+        </div>
+      </div>
+      <div class="storage-grid">
+        <div class="storage-item storage-log">
+          <p class="material__amount">9</p>
+        </div>
+        <div class="storage-item storage-leaf">
+          <p class="material__amount">3</p>
+        </div>
+        <div class="storage-item storage-grass">
+          <p class="material__amount">5</p>
+        </div>
+        <div class="storage-item storage-dirt">
+          <p class="material__amount">6</p>
+        </div>
+        <div class="storage-item storage-stone">
+          <p class="material__amount">2</p>
+        </div>
+        <div class="storage-item storage-water">
+          <p class="material__amount">0</p>
+        </div>
+      </div>
+      <div class="options-container">
+        <button class="btn">RESET</button>
+        <button class="btn">CHANGE MAP</button>
+        <button onclick="window.location.href='/'" class="btn">HOME</button>
+      </div>
     </div>
     <script src="./game.js" type="module"></script>
     <script src="./maps.js" type="module"></script>

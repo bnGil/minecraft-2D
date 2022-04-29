@@ -20,7 +20,13 @@
 body {
   height: 100vh;
   width: 100vw;
-  background: url(../imgs/materials/Dirt.png);
+}
+
+.home-page {
+  background: url("https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F120518050114-minecraft-story-top.jpg")
+    no-repeat center center/cover;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -40,7 +46,7 @@ body {
   text-align: center;
 }
 
-.play-btn {
+.btn {
   padding: 1rem 5rem;
   margin-top: 3rem;
   font-size: 3rem;
@@ -51,7 +57,7 @@ body {
   border-radius: 0.5rem;
 }
 
-.play-btn:hover {
+.btn:hover {
   background-color: var(--play-btn-hover-bgcolor);
 }
 
