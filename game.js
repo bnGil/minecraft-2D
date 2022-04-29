@@ -1,37 +1,34 @@
-const gridContainer = document.querySelector(".grid-container");
-const COLUMNS = 6;
-const ROWS = 6;
+const grid = document.querySelector(".grid");
+import mapArray from "./maps.js";
 
-// for (let i = 0; i < ROWS; i++) {
-//   for (let j = 0; j < COLUMNS; j++) {
-//     const gridItem = document.createElement("div");
-//     gridItem.classList.add("grid-item");
-//     gridContainer.appendChild(gridItem);
-//   }
-// }
-
-const mapArray = [
-  [0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0],
-  [1, 1, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1, 1],
-];
+drawMap(mapArray);
 
 function drawMap(mapArray) {
   for (let i = 0; i < mapArray.length; i++) {
     for (let j = 0; j < mapArray[i].length; j++) {
       const gridItem = document.createElement("div");
       gridItem.classList.add("grid-item");
-      gridContainer.appendChild(gridItem);
-      if (mapArray[i][j] === 0) {
-        gridItem.classList.add("sky");
-      } else if (mapArray[i][j] === 1) {
-        gridItem.classList.add("grass");
-      }
+      grid.appendChild(gridItem);
+      gridItem.classList.add(classByNum(mapArray[i][j]));
     }
   }
 }
 
-drawMap(mapArray);
+function classByNum(num) {
+  switch (num) {
+    case 0:
+      return "sky";
+    case 1:
+      return "grass";
+    case 2:
+      return "dirt";
+    case 3:
+      return "cloud";
+    case 4:
+      return "log";
+    case 5:
+      return "leaf";
+    case 6:
+      return "stone";
+  }
+}

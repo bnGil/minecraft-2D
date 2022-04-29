@@ -13,10 +13,6 @@
 }
 
 @font-face {
-  font-family: "Minecraft";
-  src: url(../fonts/Minecraft.ttf) format("woff");
-}
-@font-face {
   font-family: "Minecrafter";
   src: url(../fonts/Minecrafter.Reg.ttf) format("woff");
 }
@@ -24,7 +20,7 @@
 body {
   height: 100vh;
   width: 100vw;
-  background: url(../imgs/Dirt.PNG);
+  background: url(../imgs/materials/Dirt.png);
   display: flex;
   justify-content: center;
   flex-direction: column;

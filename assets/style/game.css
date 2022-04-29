@@ -1,38 +1,107 @@
+:root {
+  font-size: 62.5%;
+  --color-black: black;
+  --color-white: white;
+  --play-btn-hover-bg-color: rgb(234, 234, 234);
+  --menu-bg-color: #c3c3c3;
+  --sky-color: rgb(121, 188, 255);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Minecrafter", Arial, Helvetica, sans-serif;
 }
 
 body {
   height: 100vh;
   width: 100vw;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .grid-container {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(6, 1fr);
   height: 100%;
-  width: 80%;
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  height: 100vmin;
+  width: 100vmin;
+  margin: 0 5rem;
 }
 
 .grid-item {
   width: 100%;
   height: 100%;
-  min-height: calc(100% / 6);
 }
 
 .grid-item:hover {
-  border: 1px solid black;
+  border: 1px solid var(--color-white);
+}
+
+.menu-container {
+  height: 100%;
+  width: 15%;
+  background-color: var(--menu-bg-color);
+  border-left: 2px solid var(--color-black);
 }
 
 .sky {
-  background-color: lightblue;
+  background-color: var(--sky-color);
+}
+
+.cloud {
+  background-color: var(--color-white);
 }
 
 .grass {
-  background-color: green;
+  background: url(../imgs/materials/Grass.png) no-repeat;
+  background-size: cover;
+}
+
+.dirt {
+  background: url(../imgs/materials/Dirt.png) no-repeat;
+  background-size: cover;
+}
+
+.log {
+  background: url(../imgs/materials/Log.png) no-repeat;
+  background-size: cover;
+}
+
+.leaf {
+  background: url(../imgs/materials/Leaf.png) no-repeat;
+  background-size: cover;
+}
+
+.stone {
+  background: url(../imgs/materials/Cobblestone.png) no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .menu-container {
+    height: 30%;
+    width: 100%;
+    border-left: 0;
+    border-top: 2px solid var(--color-black);
+  }
+
+  .grid-container {
+    height: 80%;
+    width: 100%;
+  }
 }
