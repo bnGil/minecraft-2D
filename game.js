@@ -45,15 +45,14 @@ function getMaterialNameByNum(num) {
 
 tools.forEach((tool) => {
   tool.addEventListener("click", (e) => {
-    console.dir(e.target);
     activateTool(e.target);
     activateMaterial(e.target);
   });
 });
 
 function activateTool(toolDiv) {
-  const allTools = [...toolDiv.parentElement.children];
-  allTools.forEach((tool) => (tool.dataset.activateTool = "false"));
+  deActivateAllTools();
+  deActivateAllStorages();
   toolDiv.dataset.activateTool = "true";
 }
 
@@ -69,11 +68,39 @@ function activateMaterial(toolDiv) {
 }
 
 function clickOnMaterial(material) {
+  if (anyToolIsSelected()) {
+    pickupMaterial(material);
+  } else if (anyStorageIsSelected()) {
+    addMaterialToMap(material);
+  }
+}
+
+function anyToolIsSelected() {
+  return tools.some((tool) => tool.dataset.activateTool === "true");
+}
+
+function anyStorageIsSelected() {
+  return storage.some((storage) => storage.dataset.activeStorage === "true");
+}
+
+// function clickOnMaterial(material) {
+//   if (material.dataset.activateMaterial === "false") {
+//     tools.forEach((tool) => wrongTool(tool));
+//     return;
+//   } else {
+//     pickupMaterial(material);
+//   }
+// }
+
+function pickupMaterial(material) {
   if (material.dataset.activateMaterial === "false") {
     tools.forEach((tool) => wrongTool(tool));
-    return;
   } else {
-    pickUpMaterial(material);
+    const materialName = material.dataset.material;
+    material.classList.remove(materialName);
+    material.classList.add("sky");
+    material.dataset.material = "sky";
+    addToStorage(materialName);
   }
 }
 
@@ -85,20 +112,53 @@ function wrongTool(tool) {
   }
 }
 
-function pickUpMaterial(material) {
-  const materialName = material.dataset.material;
-  material.classList.remove(materialName);
-  material.classList.add("sky");
-  material.dataset.material = "sky";
-  addToStorage(materialName);
-}
-
 function addToStorage(materialStr) {
-  console.dir(storage);
   storage.forEach((matStorage) => {
     if (matStorage.children[0].dataset.material === materialStr) {
       const newAmount = Number(matStorage.children[0].innerHTML) + 1;
       matStorage.children[0].innerHTML = newAmount.toString();
     }
   });
+}
+
+storage.forEach((materialStorage) => {
+  materialStorage.addEventListener("click", (e) => {
+    activateMaterialStorage(e.target);
+  });
+});
+
+function activateMaterialStorage(materialStorage) {
+  deActivateAllTools();
+  deActivateAllStorages();
+  materialStorage.dataset.activeStorage = "true";
+  // activateSkyOnly();
+}
+
+function deActivateAllTools() {
+  tools.forEach((tool) => (tool.dataset.activateTool = "false"));
+}
+
+function deActivateAllStorages() {
+  storage.forEach((matStorage) => (matStorage.dataset.activeStorage = "false"));
+}
+
+function addMaterialToMap(material) {
+  if (material.dataset.material === "sky") {
+    const matStorage = storage.find(
+      (ele) => ele.dataset.activeStorage === "true"
+    );
+    const materialName = matStorage.children[0].dataset.material;
+    const currAmout = Number(matStorage.children[0].innerHTML);
+    if (currAmout > 0) {
+      material.classList.remove("sky");
+      material.classList.add(materialName);
+      material.dataset.material = materialName;
+      removeFromStorage(matStorage);
+    }
+  }
+}
+
+function removeFromStorage(matStorage) {
+  const newAmount = Number(matStorage.children[0].innerHTML) - 1;
+  matStorage.children[0].innerHTML = newAmount.toString();
 }

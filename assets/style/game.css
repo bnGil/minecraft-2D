@@ -159,6 +159,14 @@ body {
   align-items: center;
 }
 
+.storage-item > * {
+  pointer-events: none;
+}
+
+[data-active-storage="true"] {
+  border: 2px solid var(--color-white);
+}
+
 .storage-log {
   background: url(../imgs/materials/Log.png) no-repeat;
   background-size: cover;
