@@ -23,8 +23,8 @@ body {
 }
 
 .home-page {
-  background: url("https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F120518050114-minecraft-story-top.jpg")
-    no-repeat center center/cover;
+  background: url("https://wallpaper.dog/large/10998890.jpg") no-repeat center
+    center/cover;
   height: 100%;
   width: 100%;
   display: flex;
@@ -36,6 +36,25 @@ body {
 .logo {
   width: 500px;
   margin: 3rem 0;
+  animation-name: logo;
+  animation-duration: 1s;
+}
+
+@keyframes logo {
+  0% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  75% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .instructions {
@@ -59,6 +78,7 @@ body {
 
 .btn:hover {
   background-color: var(--play-btn-hover-bgcolor);
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -66,4 +86,59 @@ body {
     width: 300px;
     margin-bottom: 10rem;
   }
+}
+
+.home-btn {
+  animation-name: home-btn;
+  animation-duration: 1.5s;
+}
+
+@keyframes home-btn {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* -------------- Popup ----------------- */
+.modal-container {
+  /* display: none; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  transition: opacity 0.3s ease;
+}
+
+.modal-container.show {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.modal {
+  background-color: var(--color-white);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 3rem 5rem;
+  width: 60rem;
+  max-width: 80%;
+  text-align: center;
+}
+
+.modal p {
+  margin-top: 2rem;
+  opacity: 0.7;
+}
+
+.close-btn {
+  font-size: 2rem;
 }

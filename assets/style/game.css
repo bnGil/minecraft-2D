@@ -118,12 +118,16 @@ body {
   height: 5rem;
 }
 
-[data-activate-tool="true"] {
+[data-tool-active="true"] {
   background-color: green;
 }
 
-[data-activate-tool="true"]:hover {
+[data-tool-active="true"]:hover {
   background-color: green;
+}
+
+.error {
+  background-color: red;
 }
 
 .axe-img {
@@ -163,7 +167,7 @@ body {
   pointer-events: none;
 }
 
-[data-active-storage="true"] {
+[data-storage-active="true"] {
   border: 2px solid var(--color-white);
 }
 

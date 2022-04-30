@@ -2,8 +2,12 @@ import mapArray from "./maps.js";
 const grid = document.querySelector(".grid");
 const tools = Array.from(document.getElementsByClassName("tool-container"));
 const storage = Array.from(document.getElementsByClassName("storage-item"));
+const reset = document.getElementById("reset-btn");
 
-drawMap(mapArray);
+const map = mapArray[Math.floor(Math.random() * mapArray.length)];
+drawMap(map);
+
+reset.addEventListener("click", (e) => document.location.reload());
 
 function drawMap(mapArray) {
   for (let i = 0; i < mapArray.length; i++) {
@@ -53,16 +57,16 @@ tools.forEach((tool) => {
 function activateTool(toolDiv) {
   deActivateAllTools();
   deActivateAllStorages();
-  toolDiv.dataset.activateTool = "true";
+  toolDiv.dataset.toolActive = "true";
 }
 
 function activateMaterial(toolDiv) {
   const allMaterials = [...grid.children];
   allMaterials.forEach((material) => {
     if (toolDiv.dataset.material.includes(material.dataset.material)) {
-      material.dataset.activateMaterial = "true";
+      material.dataset.materialActive = "true";
     } else {
-      material.dataset.activateMaterial = "false";
+      material.dataset.materialActive = "false";
     }
   });
 }
@@ -76,24 +80,15 @@ function clickOnMaterial(material) {
 }
 
 function anyToolIsSelected() {
-  return tools.some((tool) => tool.dataset.activateTool === "true");
+  return tools.some((tool) => tool.dataset.toolActive === "true");
 }
 
 function anyStorageIsSelected() {
-  return storage.some((storage) => storage.dataset.activeStorage === "true");
+  return storage.some((storage) => storage.dataset.storageActive === "true");
 }
 
-// function clickOnMaterial(material) {
-//   if (material.dataset.activateMaterial === "false") {
-//     tools.forEach((tool) => wrongTool(tool));
-//     return;
-//   } else {
-//     pickupMaterial(material);
-//   }
-// }
-
 function pickupMaterial(material) {
-  if (material.dataset.activateMaterial === "false") {
+  if (material.dataset.materialActive === "false") {
     tools.forEach((tool) => wrongTool(tool));
   } else {
     const materialName = material.dataset.material;
@@ -105,10 +100,11 @@ function pickupMaterial(material) {
 }
 
 function wrongTool(tool) {
-  if (tool.dataset.activateTool === "false") {
+  if (tool.dataset.toolActive === "false") {
     return;
   } else {
-    // make it red for two seconds
+    tool.classList.add("error");
+    setTimeout(() => tool.classList.remove("error"), 1000);
   }
 }
 
@@ -130,22 +126,21 @@ storage.forEach((materialStorage) => {
 function activateMaterialStorage(materialStorage) {
   deActivateAllTools();
   deActivateAllStorages();
-  materialStorage.dataset.activeStorage = "true";
-  // activateSkyOnly();
+  materialStorage.dataset.storageActive = "true";
 }
 
 function deActivateAllTools() {
-  tools.forEach((tool) => (tool.dataset.activateTool = "false"));
+  tools.forEach((tool) => (tool.dataset.toolActive = "false"));
 }
 
 function deActivateAllStorages() {
-  storage.forEach((matStorage) => (matStorage.dataset.activeStorage = "false"));
+  storage.forEach((matStorage) => (matStorage.dataset.storageActive = "false"));
 }
 
 function addMaterialToMap(material) {
   if (material.dataset.material === "sky") {
     const matStorage = storage.find(
-      (ele) => ele.dataset.activeStorage === "true"
+      (ele) => ele.dataset.storageActive === "true"
     );
     const materialName = matStorage.children[0].dataset.material;
     const currAmout = Number(matStorage.children[0].innerHTML);

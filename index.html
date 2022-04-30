@@ -11,12 +11,29 @@
   <body>
     <header class="home-page">
       <img class="logo" src="assets/svgs/minecraft-logo.com.svg" alt="logo" />
-      <p class="instructions">
+      <!-- <p class="instructions">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis,
         tempora quasi? Doloribus, quo eligendi! Veniam nihil ad consequuntur cum
         ea!
-      </p>
-      <a href="./game.html" class="btn">PLAY</a>
+      </p> -->
+      <a href="./game.html" class="btn home-btn">PLAY</a>
+      <button class="btn home-btn" id="open">HELP</button>
+      <div class="modal-container" id="modal-container">
+        <div class="modal">
+          <h1>How to play</h1>
+          <p>
+            Press PLAY to start the game. Select a tool and remove tiles from
+            the map. Each tile is then will be added to the inventory. Select
+            the tile in the inventory and then you can add it to the map
+            wherever you want unless it's sky. Use the axe to cut trees and
+            leaves, the pickaxe for mining rocks and shovel for digging dirt and
+            grass.
+          </p>
+          <p>Have fun</p>
+          <button class="btn close-btn" id="close">CLOSE</button>
+        </div>
+      </div>
     </header>
+    <script src="./index.js"></script>
   </body>
 </html>

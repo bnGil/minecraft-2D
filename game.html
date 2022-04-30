@@ -16,7 +16,7 @@
       <div class="tools-container">
         <div
           class="tool-container axe"
-          data-activate-tool="false"
+          data-tool-active="false"
           data-material="log leaf"
         >
           <div class="axe-img tool"></div>
@@ -24,7 +24,7 @@
         </div>
         <div
           class="tool-container pickaxe"
-          data-activate-tool="false"
+          data-tool-active="false"
           data-material="stone"
         >
           <div class="pickaxe-img tool"></div>
@@ -32,7 +32,7 @@
         </div>
         <div
           class="tool-container shovel"
-          data-activate-tool="false"
+          data-tool-active="false"
           data-material="dirt grass"
         >
           <div class="shovel-img tool"></div>
@@ -42,30 +42,30 @@
       <div class="storage-grid">
         <div
           class="storage-item storage-log"
-          data-active-storage="false"
+          data-storage-active="false"
           ="log"
         >
           <p class="material__amount" data-material="log">0</p>
         </div>
-        <div class="storage-item storage-leaf" data-active-storage="false">
+        <div class="storage-item storage-leaf" data-storage-active="false">
           <p class="material__amount" data-material="leaf">0</p>
         </div>
-        <div class="storage-item storage-grass" data-active-storage="false">
+        <div class="storage-item storage-grass" data-storage-active="false">
           <p class="material__amount" data-material="grass">0</p>
         </div>
-        <div class="storage-item storage-dirt" data-active-storage="false">
+        <div class="storage-item storage-dirt" data-storage-active="false">
           <p class="material__amount" data-material="dirt">0</p>
         </div>
-        <div class="storage-item storage-stone" data-active-storage="false">
+        <div class="storage-item storage-stone" data-storage-active="false">
           <p class="material__amount" data-material="stone">0</p>
         </div>
-        <div class="storage-item storage-water" data-active-storage="false">
+        <!-- <div class="storage-item storage-water" data-storage-active="false">
           <p class="material__amount" data-material="water">0</p>
-        </div>
+        </div> -->
       </div>
       <div class="options-container">
-        <button class="btn">RESET</button>
-        <button class="btn">CHANGE MAP</button>
+        <button class="btn" id="reset-btn">RESET</button>
+        <!-- <button class="btn" id="changemap">CHANGE MAP</button> -->
         <button onclick="window.location.href='/'" class="btn">HOME</button>
       </div>
     </div>
