@@ -1,12 +1,14 @@
 import mapArray from "./maps.js";
+const map = mapArray[Math.floor(Math.random() * mapArray.length)];
+
 const grid = document.querySelector(".grid");
 const tools = Array.from(document.getElementsByClassName("tool-container"));
 const storage = Array.from(document.getElementsByClassName("storage-item"));
 const reset = document.getElementById("reset-btn");
 
-const map = mapArray[Math.floor(Math.random() * mapArray.length)];
 drawMap(map);
 
+grid.addEventListener("click", (e) => clickOnMaterial(e.target));
 reset.addEventListener("click", (e) => document.location.reload());
 
 function drawMap(mapArray) {
@@ -25,7 +27,6 @@ function createNewMaterial(num) {
   gridItem.setAttribute("data-material", materialName);
   gridItem.setAttribute("data-activate-material", "false");
   grid.appendChild(gridItem);
-  gridItem.addEventListener("click", (e) => clickOnMaterial(e.target));
 }
 
 function getMaterialNameByNum(num) {
